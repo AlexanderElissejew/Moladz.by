@@ -8,6 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="navBack">#199605</color>
+    <color name="navBackOn">#166D07</color>
+
+    <color name="grey">#eeefee</color>
     <color name="colorPrimary">#f7f6f9</color>
     <color name="colorPrimaryDark">#eeefee</color>
     <color name="colorAccent">#191819</color>
