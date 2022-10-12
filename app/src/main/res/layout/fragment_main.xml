@@ -6,16 +6,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.MainFragment">
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/news_adapter"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="12dp"
-    android:clipToPadding="false"
-    android:paddingBottom="50dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf= "parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/news_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/science_news"
+        android:textColor="@color/navBack"
+        android:textSize="30sp"
+        android:fontFamily="@font/g_bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/news_adapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="50dp"
+        android:clipToPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/news_top"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -26,7 +40,8 @@
         android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf= "parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/news_top"
+        app:layout_constraintHorizontal_bias="0.5"/>
 
 
 

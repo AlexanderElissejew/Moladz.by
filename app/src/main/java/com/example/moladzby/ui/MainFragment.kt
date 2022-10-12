@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moladzby.R
 import com.example.moladzby.databinding.FragmentDeatailsBinding
@@ -31,19 +33,28 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMainBinding .inflate(layoutInflater, container, false)
+        _binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
+
+        newsAdapter.setOnItemClickListener {
+            val bundle = bundleOf("article" to it)
+            view.findNavController().navigate(
+                R.id.action_mainFragment_to_deatailsFragment,
+                bundle
+            )
+        }
+
         viewModel.newsLiveData.observe(viewLifecycleOwner) { response ->
             when(response){
                 is Resource.Success ->{
                     progress_bar.visibility = View.INVISIBLE
                     response.data?.let {
-                        newsAdapter.differ.submitList(it.items)
+                        newsAdapter.differ.submitList(it.articles)
                     }
                 }
                 is Resource.Error -> {
